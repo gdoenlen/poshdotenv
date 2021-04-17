@@ -43,7 +43,7 @@ Function Set-DotEnv {
                 Write-Verbose "`tValue is now $value"
             }
 
-            [System.Environment]::SetEnvironmentVariable($key, $value)
+            Set-Item "env:$key" $value
 
             $dotenv_added_vars += @{$key = $value }
             $env:dotnetenv_added_vars = ($dotenv_added_vars.keys -join (","))
